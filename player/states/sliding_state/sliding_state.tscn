@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dy66hp6lj0lx8"]
+
+[ext_resource type="Script" uid="uid://bstl75k3o027e" path="res://player/states/sliding_state/sliding_state.gd" id="1_4i8t8"]
+
+[node name="SlidingState" type="Node"]
+script = ExtResource("1_4i8t8")

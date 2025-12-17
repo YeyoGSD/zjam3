@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://044jwuxs88vu"]
+
+[ext_resource type="Script" uid="uid://jq4v0q17k46t" path="res://player/states/player_state_run.gd" id="1_k4h64"]
+
+[node name="RunningState" type="Node"]
+script = ExtResource("1_k4h64")
+metadata/_custom_type_script = "uid://3o4nat7nj7pj"

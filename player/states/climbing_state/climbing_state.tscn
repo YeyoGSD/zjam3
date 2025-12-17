@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cb6nk71xpdbwo"]
+
+[ext_resource type="Script" uid="uid://jbvpx27cis5o" path="res://player/states/climbing_state/climbing_state.gd" id="1_jdlpd"]
+
+[node name="ClimbingState" type="Node"]
+script = ExtResource("1_jdlpd")

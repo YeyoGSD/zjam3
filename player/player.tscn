@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://d0owg7aispb6k"]
+[gd_scene load_steps=12 format=3 uid="uid://d0owg7aispb6k"]
 
 [ext_resource type="Script" uid="uid://do43bypiomier" path="res://player/player.gd" id="1_g1dw6"]
 [ext_resource type="Texture2D" uid="uid://baehgce5k47sq" path="res://icon.svg" id="1_oul6g"]
+[ext_resource type="Script" uid="uid://dfmk3lkfqrbru" path="res://components/hurt_player/health_cmp.gd" id="2_hg6s5"]
 [ext_resource type="Script" uid="uid://dkyhwdj2bikpr" path="res://state_machine/state_machine.gd" id="2_rkbax"]
 [ext_resource type="Script" uid="uid://dls8mdmma08bd" path="res://player/states_transitions/running_state.gd" id="4_qjkh3"]
 [ext_resource type="Script" uid="uid://dqjoc1gvu6u1f" path="res://player/states_transitions/falling_state.gd" id="5_qjkh3"]
@@ -30,6 +31,10 @@ position = Vector2(0, -45)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_g1dw6")
 disabled = true
+
+[node name="HealthCMP" type="Node" parent="."]
+script = ExtResource("2_hg6s5")
+metadata/_custom_type_script = "uid://dfmk3lkfqrbru"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 1)

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctcinj5nv2k4x"]
+
+[ext_resource type="Script" uid="uid://dfmk3lkfqrbru" path="res://components/hurt_player/health_cmp.gd" id="1_c3eef"]
+
+[node name="HealthCMP" type="Node"]
+script = ExtResource("1_c3eef")

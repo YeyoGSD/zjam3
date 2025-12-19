@@ -36,6 +36,7 @@ texture = ExtResource("1_oul6g")
 offset = Vector2(0, -64)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.5, 0.5)
 limit_smoothed = true
 
 [node name="RayCastWallHigh" type="RayCast2D" parent="."]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://0qp0a5lge7rg"]
+[gd_scene load_steps=11 format=3 uid="uid://0qp0a5lge7rg"]
 
 [ext_resource type="PackedScene" uid="uid://d0owg7aispb6k" path="res://player/player.tscn" id="1_53q0u"]
 [ext_resource type="Script" uid="uid://bt554a6p708sd" path="res://main/main.gd" id="1_xwkvk"]
 [ext_resource type="Texture2D" uid="uid://baehgce5k47sq" path="res://icon.svg" id="2_pjrb6"]
+[ext_resource type="PackedScene" uid="uid://5e4g1m5pdk26" path="res://zombie/zombie.tscn" id="4_c651c"]
 
 [sub_resource type="Animation" id="Animation_pjrb6"]
 resource_name = "DayCycle"
@@ -97,5 +98,8 @@ texture = ExtResource("2_pjrb6")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
 position = Vector2(947, 175)
 shape = SubResource("RectangleShape2D_xwkvk")
+
+[node name="Zombie" parent="." instance=ExtResource("4_c651c")]
+position = Vector2(937, 308)
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

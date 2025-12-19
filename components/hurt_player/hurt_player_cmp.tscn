@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3tsj5fb5qkex"]
+
+[ext_resource type="Script" uid="uid://cxek38poruo18" path="res://components/hurt_player/hurt_player_cmp.gd" id="1_houvh"]
+
+[node name="HurtPlayerCMP" type="Node"]
+script = ExtResource("1_houvh")

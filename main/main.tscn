@@ -102,4 +102,7 @@ shape = SubResource("RectangleShape2D_xwkvk")
 [node name="Zombie" parent="." instance=ExtResource("4_c651c")]
 position = Vector2(937, 308)
 
+[node name="Zombie2" parent="." instance=ExtResource("4_c651c")]
+position = Vector2(1030, 308)
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

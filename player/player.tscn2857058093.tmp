@@ -1,0 +1,88 @@
+[gd_scene load_steps=11 format=3 uid="uid://d0owg7aispb6k"]
+
+[ext_resource type="Script" uid="uid://do43bypiomier" path="res://player/player.gd" id="1_g1dw6"]
+[ext_resource type="Texture2D" uid="uid://baehgce5k47sq" path="res://icon.svg" id="1_oul6g"]
+[ext_resource type="Script" uid="uid://dkyhwdj2bikpr" path="res://state_machine/state_machine.gd" id="2_rkbax"]
+[ext_resource type="Script" uid="uid://dls8mdmma08bd" path="res://player/states_transitions/running_state.gd" id="4_qjkh3"]
+[ext_resource type="Script" uid="uid://dqjoc1gvu6u1f" path="res://player/states_transitions/falling_state.gd" id="5_qjkh3"]
+[ext_resource type="Script" uid="uid://dykha120bp2lp" path="res://player/states_transitions/jumping_state.gd" id="6_g6k8r"]
+[ext_resource type="Script" uid="uid://dwj4cj2jxq5s3" path="res://player/states_transitions/sliding_state.gd" id="7_boad6"]
+[ext_resource type="Script" uid="uid://jok3a0h0dl5c" path="res://player/states_transitions/climbing_state.gd" id="8_rgyib"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rkbax"]
+radius = 44.0
+height = 144.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g1dw6"]
+radius = 44.0
+height = 144.0
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_g1dw6")
+
+[node name="CollisionShapeStanding" type="CollisionShape2D" parent="."]
+position = Vector2(0, -64)
+shape = SubResource("CapsuleShape2D_rkbax")
+
+[node name="CollisionShapeSliding" type="CollisionShape2D" parent="."]
+position = Vector2(0, -45)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_g1dw6")
+disabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 1)
+texture = ExtResource("1_oul6g")
+offset = Vector2(0, -64)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(300, -200)
+zoom = Vector2(0.5, 0.5)
+position_smoothing_enabled = true
+
+[node name="RayCastWallHigh" type="RayCast2D" parent="."]
+position = Vector2(11, -65)
+rotation = -1.5707964
+
+[node name="RayCastWallLow" type="RayCast2D" parent="."]
+position = Vector2(11, -11)
+rotation = -1.5707964
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("default_state")]
+script = ExtResource("2_rkbax")
+default_state = NodePath("FallingState")
+metadata/_custom_type_script = "uid://dkyhwdj2bikpr"
+
+[node name="RunningState" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+unique_name_in_owner = true
+script = ExtResource("4_qjkh3")
+player = NodePath("../..")
+metadata/_custom_type_script = "uid://jq4v0q17k46t"
+
+[node name="FallingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+unique_name_in_owner = true
+script = ExtResource("5_qjkh3")
+player = NodePath("../..")
+metadata/_custom_type_script = "uid://di65evtvk35k3"
+
+[node name="JumpingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+unique_name_in_owner = true
+script = ExtResource("6_g6k8r")
+player = NodePath("../..")
+metadata/_custom_type_script = "uid://tnwl4f0v5fm5"
+
+[node name="SlidingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("sprite", "standing_collision", "sliding_collision", "player")]
+unique_name_in_owner = true
+script = ExtResource("7_boad6")
+sprite = NodePath("../../Sprite2D")
+standing_collision = NodePath("../../CollisionShapeStanding")
+sliding_collision = NodePath("../../CollisionShapeSliding")
+player = NodePath("../..")
+metadata/_custom_type_script = "uid://bstl75k3o027e"
+
+[node name="ClimbingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+unique_name_in_owner = true
+script = ExtResource("8_rgyib")
+player = NodePath("../..")
+metadata/_custom_type_script = "uid://jbvpx27cis5o"

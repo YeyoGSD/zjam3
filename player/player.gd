@@ -6,9 +6,9 @@ extends CharacterBody2D
 @export var jump_force := -400.0
 @export var climb_speed := -400.0
 
-@onready var ray_cast_wall_high: RayCast2D = $RayCastWallHigh
-@onready var ray_cast_wall_low: RayCast2D = $RayCastWallLow
-@onready var health_cmp: HealthCMP = $HealthCMP
+@onready var ray_cast_wall_high := $RayCastWallHigh as RayCast2D
+@onready var ray_cast_wall_low := $RayCastWallLow as RayCast2D
+@onready var health_cmp := $HealthCMP as HealthCMP
 
 var running_speed: float
 var sliding_speed: float

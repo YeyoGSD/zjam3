@@ -12,6 +12,7 @@ func _switch_collision_disabled() -> void:
 # Manipulacion de sprite temporal hasta que tenga las animaciones
 
 func start():
+	player.velocity.x = player.sliding_speed
 	_switch_collision_disabled()
 	sprite.offset = Vector2(64,0)
 	sprite.rotate(-PI/2)

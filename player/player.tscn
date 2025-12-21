@@ -10,25 +10,30 @@
 [ext_resource type="Script" uid="uid://dwj4cj2jxq5s3" path="res://player/states_transitions/sliding_state.gd" id="7_boad6"]
 [ext_resource type="Script" uid="uid://jok3a0h0dl5c" path="res://player/states_transitions/climbing_state.gd" id="8_rgyib"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rkbax"]
-radius = 44.0
-height = 144.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hg6s5"]
+radius = 30.0
+height = 124.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g1dw6"]
-radius = 44.0
-height = 144.0
+radius = 30.0
+height = 124.0
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_g1dw6")
 climb_speed = -500.0
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 1)
+texture = ExtResource("1_oul6g")
+offset = Vector2(0, -64)
+
 [node name="CollisionShapeStanding" type="CollisionShape2D" parent="."]
 position = Vector2(0, -64)
-shape = SubResource("CapsuleShape2D_rkbax")
+shape = SubResource("CapsuleShape2D_hg6s5")
 
 [node name="CollisionShapeSliding" type="CollisionShape2D" parent="."]
-position = Vector2(0, -45)
+position = Vector2(0, -31)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_g1dw6")
 disabled = true
@@ -37,23 +42,15 @@ disabled = true
 script = ExtResource("2_hg6s5")
 metadata/_custom_type_script = "uid://dfmk3lkfqrbru"
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 1)
-texture = ExtResource("1_oul6g")
-offset = Vector2(0, -64)
+[node name="RayCastFrontLow" type="RayCast2D" parent="."]
+position = Vector2(0, -4)
+rotation = -1.5707964
+target_position = Vector2(-1.4305115e-06, 32)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(300, -200)
 zoom = Vector2(0.5, 0.5)
 position_smoothing_enabled = true
-
-[node name="RayCastWallHigh" type="RayCast2D" parent="."]
-position = Vector2(11, -65)
-rotation = -1.5707964
-
-[node name="RayCastWallLow" type="RayCast2D" parent="."]
-position = Vector2(11, -11)
-rotation = -1.5707964
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("default_state")]
 script = ExtResource("2_rkbax")

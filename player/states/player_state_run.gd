@@ -2,4 +2,4 @@ class_name RunningState
 extends PlayerStateBase
 
 func start():
-	player.velocity.x = player.running_speed
+	player.velocity = Vector2(player.running_speed, 0)

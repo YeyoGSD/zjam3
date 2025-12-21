@@ -15,7 +15,7 @@ tracks/0/path = NodePath("AmbientLight:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 60.000004, 120.00001, 180),
+"times": PackedFloat32Array(0, 3.0333333, 120.00001, 180),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(0.7188297, 0.4641232, 0.3343134, 1), Color(1, 0.27058825, 0.05490196, 1), Color(0, 0.007843138, 0.22352941, 1)]

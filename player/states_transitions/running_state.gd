@@ -5,7 +5,7 @@ func on_physics_process(delta: float) -> void:
 	
 	if not player.is_on_floor():
 		state_transition_requested.emit(states[Player.State.FALLING])
-	elif player.ray_cast_wall_high.is_colliding():
+	elif player.ray_cast_front_low.is_colliding():
 		state_transition_requested.emit(states[Player.State.CLIMBING])
 
 

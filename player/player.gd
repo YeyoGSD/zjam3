@@ -7,6 +7,7 @@ extends CharacterBody2D
 @export var climb_speed := -400.0
 
 @onready var ray_cast_front_low := $RayCastFrontLow as RayCast2D
+@onready var ray_cast_top_left := $RayCastTopLeft as RayCast2D
 @onready var health_cmp := $HealthCMP as HealthCMP
 
 var running_speed: float

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://d0owg7aispb6k"]
+[gd_scene load_steps=13 format=3 uid="uid://d0owg7aispb6k"]
 
 [ext_resource type="Script" uid="uid://do43bypiomier" path="res://player/player.gd" id="1_g1dw6"]
 [ext_resource type="Texture2D" uid="uid://baehgce5k47sq" path="res://icon.svg" id="1_oul6g"]
@@ -17,6 +17,8 @@ height = 124.0
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g1dw6"]
 radius = 30.0
 height = 124.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hg6s5"]
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
@@ -89,3 +91,10 @@ unique_name_in_owner = true
 script = ExtResource("8_rgyib")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://jbvpx27cis5o"
+
+[node name="BodySensor" type="Area2D" parent="."]
+position = Vector2(0, -31)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BodySensor"]
+shape = SubResource("CircleShape2D_hg6s5")

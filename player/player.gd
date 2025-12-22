@@ -19,7 +19,7 @@ func _connect_signals() -> void:
 		health_cmp.decrease_health(damage)
 		match health_cmp.lives:
 			2: running_speed = default_speed - 50
-			3: running_speed = default_speed - 100
+			1: running_speed = default_speed - 100
 		)
 
 
@@ -30,6 +30,7 @@ func _set_speeds() -> void:
 
 func _ready() -> void:
 	_set_speeds()
+	_connect_signals()
 
 
 func _physics_process(_delta: float) -> void:

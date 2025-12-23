@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://0qp0a5lge7rg"]
+[gd_scene load_steps=15 format=3 uid="uid://0qp0a5lge7rg"]
 
 [ext_resource type="PackedScene" uid="uid://d0owg7aispb6k" path="res://player/player.tscn" id="1_53q0u"]
 [ext_resource type="Script" uid="uid://bt554a6p708sd" path="res://main/main.gd" id="1_xwkvk"]
@@ -54,6 +54,9 @@ size = Vector2(590, 135)
 size = Vector2(126, 126)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_kfbq2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kfbq2"]
+radius = 64.00781
 
 [node name="Main" type="Node"]
 script = ExtResource("1_xwkvk")
@@ -130,8 +133,16 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldLimits"]
 shape = SubResource("WorldBoundaryShape2D_kfbq2")
 
+[node name="WinArea" type="Area2D" parent="."]
+position = Vector2(1923, 148)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WinArea"]
+shape = SubResource("CircleShape2D_kfbq2")
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="WorldLimits" to="." method="_on_world_limits_body_entered"]
+[connection signal="body_entered" from="WinArea" to="." method="_on_win_area_body_entered"]
 
 [editable path="RadioZones/Slide"]
 [editable path="RadioZones/Jump"]

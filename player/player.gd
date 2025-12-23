@@ -3,8 +3,8 @@ extends CharacterBody2D
 
 @export var default_speed := 200.0
 @export var gravity := 980.0
-@export var jump_force := -400.0
-@export var climb_speed := -400.0
+@export var jump_force := -200.0
+@export var climb_speed := -200.0
 
 @onready var ray_cast_front_low := $RayCastFrontLow as RayCast2D
 @onready var ray_cast_front_high := $RayCastFrontHigh as RayCast2D

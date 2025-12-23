@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://0qp0a5lge7rg"]
+[gd_scene load_steps=16 format=3 uid="uid://0qp0a5lge7rg"]
 
 [ext_resource type="PackedScene" uid="uid://d0owg7aispb6k" path="res://player/player.tscn" id="1_53q0u"]
 [ext_resource type="Script" uid="uid://bt554a6p708sd" path="res://main/main.gd" id="1_xwkvk"]
 [ext_resource type="PackedScene" uid="uid://dddfvdravsbp7" path="res://UI/radio_ui/radio_ui.tscn" id="2_kfbq2"]
 [ext_resource type="Texture2D" uid="uid://baehgce5k47sq" path="res://icon.svg" id="2_pjrb6"]
+[ext_resource type="PackedScene" uid="uid://fkaptauc5mu0" path="res://UI/game_over_screen/game_over_screen.tscn" id="3_4dugh"]
 [ext_resource type="PackedScene" uid="uid://5e4g1m5pdk26" path="res://zombie/zombie.tscn" id="4_c651c"]
 [ext_resource type="PackedScene" uid="uid://dt5i1r5j0vf04" path="res://radio_zone/radio_zone.tscn" id="5_3wy1v"]
 
@@ -65,6 +66,10 @@ script = ExtResource("1_xwkvk")
 
 [node name="RadioUI" parent="UI" instance=ExtResource("2_kfbq2")]
 
+[node name="GameOverScreen" parent="UI" instance=ExtResource("3_4dugh")]
+process_mode = 2
+visible = false
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_c651c")
@@ -115,6 +120,9 @@ position = Vector2(937, 308)
 
 [node name="Zombie2" parent="." instance=ExtResource("4_c651c")]
 position = Vector2(1030, 308)
+
+[node name="Zombie3" parent="." instance=ExtResource("4_c651c")]
+position = Vector2(840, 308)
 
 [node name="RadioZones" type="Node" parent="."]
 

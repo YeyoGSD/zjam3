@@ -21,6 +21,7 @@ func _connect_signals() -> void:
 		match health_cmp.lives:
 			2: running_speed = default_speed - 50
 			1: running_speed = default_speed - 100
+			0: EventBus.player_died.emit()
 		)
 
 

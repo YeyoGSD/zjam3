@@ -9,6 +9,7 @@ extends CharacterBody2D
 @onready var ray_cast_front_low := $RayCastFrontLow as RayCast2D
 @onready var ray_cast_front_high := $RayCastFrontHigh as RayCast2D
 @onready var ray_cast_top_left := $RayCastTopLeft as RayCast2D
+@onready var animated_sprite_2d := $AnimatedSprite2D as AnimatedSprite2D
 @onready var health_cmp := $HealthCMP as HealthCMP
 
 var running_speed: float

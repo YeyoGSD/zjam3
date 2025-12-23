@@ -3,6 +3,7 @@ extends PlayerStateBase
 
 func start():
 	player.velocity = Vector2(player.running_speed, 0)
+	player.animated_sprite_2d.play("running")
 
 func on_physics_process(_delta: float) -> void:
 	if player.ray_cast_front_high.is_colliding() and not player.ray_cast_front_low.is_colliding():

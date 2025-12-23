@@ -7,6 +7,7 @@ extends CharacterBody2D
 @export var climb_speed := -400.0
 
 @onready var ray_cast_front_low := $RayCastFrontLow as RayCast2D
+@onready var ray_cast_front_high := $RayCastFrontHigh as RayCast2D
 @onready var ray_cast_top_left := $RayCastTopLeft as RayCast2D
 @onready var health_cmp := $HealthCMP as HealthCMP
 
@@ -15,14 +16,16 @@ var sliding_speed: float
 
 enum State { RUNNING, FALLING ,JUMPING, SLIDING, CLIMBING }
 
-func _connect_signals() -> void:
-	EventBus.player_got_hurt.connect(func(damage: int):
+func recieve_damage(damage: int):
 		health_cmp.decrease_health(damage)
 		match health_cmp.lives:
 			2: running_speed = default_speed - 50
 			1: running_speed = default_speed - 100
 			0: EventBus.player_died.emit()
-		)
+
+
+func _connect_signals() -> void:
+	EventBus.player_got_hurt.connect(recieve_damage)
 
 
 func _set_speeds() -> void:

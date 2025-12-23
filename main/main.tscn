@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://0qp0a5lge7rg"]
+[gd_scene load_steps=24 format=4 uid="uid://0qp0a5lge7rg"]
 
 [ext_resource type="PackedScene" uid="uid://d0owg7aispb6k" path="res://player/player.tscn" id="1_53q0u"]
 [ext_resource type="Script" uid="uid://bt554a6p708sd" path="res://main/main.gd" id="1_xwkvk"]
@@ -46,6 +46,9 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kfbq2"]
 size = Vector2(774, 66)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5xyti"]
+size = Vector2(495, 122)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_73k8k"]
 size = Vector2(494, 61)
@@ -123,6 +126,14 @@ dialogue_text = "Presiona \"S\" para deslizarte"
 position = Vector2(494, 21)
 shape = SubResource("RectangleShape2D_kfbq2")
 
+[node name="NoSlideHurt" parent="RadioZones" instance=ExtResource("5_3wy1v")]
+position = Vector2(1855, 282)
+dialogue_text = "Si no te deslizas a tiempo puedes golpearte la cabeza"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RadioZones/NoSlideHurt"]
+position = Vector2(7.5, 0)
+shape = SubResource("RectangleShape2D_5xyti")
+
 [node name="HazCaso" parent="RadioZones" instance=ExtResource("5_3wy1v")]
 position = Vector2(399, 262)
 dialogue_text = "¿Para eso me pides tutorial...?"
@@ -132,11 +143,10 @@ position = Vector2(1457, -169.5)
 shape = SubResource("RectangleShape2D_73k8k")
 
 [node name="Jump" parent="RadioZones" instance=ExtResource("5_3wy1v")]
-position = Vector2(2279, 262)
+position = Vector2(2808, 268)
 dialogue_text = "Presiona \"espacio\" para saltar"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RadioZones/Jump"]
-position = Vector2(375, 0)
 shape = SubResource("RectangleShape2D_4dugh")
 
 [node name="NotJump" parent="RadioZones" instance=ExtResource("5_3wy1v")]

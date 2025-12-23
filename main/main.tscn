@@ -156,7 +156,7 @@ shape = SubResource("RectangleShape2D_grrlh")
 
 [node name="Confia" parent="RadioZones" instance=ExtResource("5_3wy1v")]
 position = Vector2(5850, -98)
-dialogue_text = "Sobrevivirás si haces lo que te digas... tal vez"
+dialogue_text = "Sobrevivirás si haces lo que te diga... tal vez"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RadioZones/Confia"]
 position = Vector2(0, -85.25)

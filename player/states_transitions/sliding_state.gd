@@ -29,3 +29,5 @@ func on_physics_process(delta: float) -> void:
 	can_standup = !player.ray_cast_top_left.is_colliding()
 	if timer_timeout and can_standup:
 		state_transition_requested.emit(states[Player.State.RUNNING])
+	elif not player.is_on_floor():
+		state_transition_requested.emit(states[Player.State.FALLING])

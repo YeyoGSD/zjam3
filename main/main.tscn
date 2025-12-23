@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://0qp0a5lge7rg"]
+[gd_scene load_steps=14 format=3 uid="uid://0qp0a5lge7rg"]
 
 [ext_resource type="PackedScene" uid="uid://d0owg7aispb6k" path="res://player/player.tscn" id="1_53q0u"]
 [ext_resource type="Script" uid="uid://bt554a6p708sd" path="res://main/main.gd" id="1_xwkvk"]
@@ -52,6 +52,8 @@ size = Vector2(590, 135)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xwkvk"]
 size = Vector2(126, 126)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_kfbq2"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_xwkvk")
@@ -121,7 +123,15 @@ dialogue_text = "Presiona \"S\" para deslizarte"
 position = Vector2(1230, 279)
 dialogue_text = "Presiona \"Espacio\" para saltar"
 
+[node name="WorldLimits" type="Area2D" parent="."]
+position = Vector2(0, 1067)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldLimits"]
+shape = SubResource("WorldBoundaryShape2D_kfbq2")
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="body_entered" from="WorldLimits" to="." method="_on_world_limits_body_entered"]
 
 [editable path="RadioZones/Slide"]
 [editable path="RadioZones/Jump"]

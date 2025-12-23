@@ -53,8 +53,9 @@ size_flags_horizontal = 4
 layout_mode = 2
 text = "Volver a jugar"
 
-[node name="ExitButton" type="Button" parent="Panel/VBoxContainer/HBoxContainer"]
+[node name="MenuButton" type="Button" parent="Panel/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-text = "Salir"
+text = "Menú Principal"
 
 [connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]

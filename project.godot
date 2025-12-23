@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="zjam 3"
-run/main_scene="uid://0qp0a5lge7rg"
+run/main_scene="uid://dt5pf8hr7isv5"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://icon.svg"
 

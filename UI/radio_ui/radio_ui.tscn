@@ -72,12 +72,12 @@ layout_mode = 0
 offset_left = 10.0
 offset_top = 10.0
 offset_right = 630.0
-offset_bottom = 95.0
+offset_bottom = 105.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 629.0
+offset_bottom = 95.0
 
 [node name="PortraitContainer" type="MarginContainer" parent="Panel/HBoxContainer"]
 layout_mode = 2
@@ -100,9 +100,9 @@ theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
 [node name="DialogueLabel" type="Label" parent="Panel/HBoxContainer/TextContainer"]
-custom_minimum_size = Vector2(520, 0)
+custom_minimum_size = Vector2(510, 0)
 layout_mode = 2
-text = "Mensaje largo que se debe mostar aqui aksmdklmn enka njkdaldkl adlkadn ajnd"
+text = "Mensaje largo que se debe mostar aqui aksmdklmn enka dadnkjwqd kjawd wkja djkw dwjkd awkj dkjwa dwjd wka dwkja djkw"
 autowrap_mode = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

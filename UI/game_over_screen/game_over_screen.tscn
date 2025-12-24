@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://fkaptauc5mu0"]
+[gd_scene load_steps=3 format=3 uid="uid://fkaptauc5mu0"]
 
 [ext_resource type="Script" uid="uid://bwcsmyx6yloba" path="res://UI/game_over_screen/game_over_screen.gd" id="1_4l40c"]
+[ext_resource type="Theme" uid="uid://d2mhkr85rcqje" path="res://UI/theme.tres" id="1_u8cwl"]
 
 [node name="GameOverScreen" type="Control"]
 layout_mode = 3
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_u8cwl")
 script = ExtResource("1_4l40c")
 
 [node name="Panel" type="Panel" parent="."]
@@ -43,7 +45,7 @@ text = "Game Over"
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 32
-text = "No lograste salvar el mundo"
+text = "Le fallaste a la humanidad"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
 layout_mode = 2

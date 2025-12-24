@@ -1,0 +1,15 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://d2mhkr85rcqje"]
+
+[ext_resource type="FontFile" uid="uid://ckyhd00btaidy" path="res://UI/ChipMug.ttf" id="1_go05t"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_go05t"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+
+[resource]
+default_font = ExtResource("1_go05t")
+default_font_size = 24
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/styles/normal = SubResource("StyleBoxEmpty_go05t")

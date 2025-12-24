@@ -1,6 +1,6 @@
 extends Control
 
-@onready var label: Label = $Panel/HBoxContainer/TextContainer/DialogueLabel
+@onready var label: Label = $BG/HBoxContainer/TextContainer/DialogueLabel
 @onready var animation_player := $AnimationPlayer as AnimationPlayer
 
 func _ready() -> void:

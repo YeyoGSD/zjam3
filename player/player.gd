@@ -20,7 +20,9 @@ enum State { RUNNING, FALLING ,JUMPING, SLIDING, CLIMBING }
 func recieve_damage(damage: int):
 		health_cmp.decrease_health(damage)
 		match health_cmp.lives:
-			2: _set_speeds(default_speed - 50)
+			2:
+				_set_speeds(default_speed - 50)
+				EventBus.player_first_hit.emit()
 			1: _set_speeds(default_speed - 100)
 			0: EventBus.player_died.emit()
 

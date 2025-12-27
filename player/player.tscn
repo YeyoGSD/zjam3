@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://d0owg7aispb6k"]
+[gd_scene load_steps=32 format=3 uid="uid://d0owg7aispb6k"]
 
 [ext_resource type="Script" uid="uid://do43bypiomier" path="res://player/player.gd" id="1_g1dw6"]
 [ext_resource type="Texture2D" uid="uid://gvfag7xmawec" path="res://player/player_sprites.png" id="2_8t03j"]
@@ -9,6 +9,9 @@
 [ext_resource type="Script" uid="uid://dykha120bp2lp" path="res://player/states_transitions/jumping_state.gd" id="6_g6k8r"]
 [ext_resource type="Script" uid="uid://dwj4cj2jxq5s3" path="res://player/states_transitions/sliding_state.gd" id="7_boad6"]
 [ext_resource type="Script" uid="uid://jok3a0h0dl5c" path="res://player/states_transitions/climbing_state.gd" id="8_rgyib"]
+[ext_resource type="AudioStream" uid="uid://tleiwvqsrfu0" path="res://player/running.ogg" id="10_8t03j"]
+[ext_resource type="AudioStream" uid="uid://dx7ucw25criur" path="res://player/hurt_player.ogg" id="11_2ieo8"]
+[ext_resource type="AudioStream" uid="uid://bmgkb01q06fn0" path="res://player/slide.ogg" id="13_yllr7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2ieo8"]
 atlas = ExtResource("2_8t03j")
@@ -65,6 +68,10 @@ region = Rect2(64, 96, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_x7c3f"]
 atlas = ExtResource("2_8t03j")
 region = Rect2(96, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s7qer"]
+atlas = ExtResource("2_8t03j")
+region = Rect2(96, 64, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ebec5"]
 animations = [{
@@ -134,6 +141,14 @@ animations = [{
 "loop": true,
 "name": &"running",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s7qer")
+}],
+"loop": true,
+"name": &"sliding",
+"speed": 5.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hg6s5"]
@@ -153,7 +168,7 @@ script = ExtResource("1_g1dw6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ebec5")
-animation = &"falling"
+animation = &"sliding"
 autoplay = "idle"
 offset = Vector2(0, -16)
 
@@ -199,9 +214,10 @@ script = ExtResource("2_rkbax")
 default_state = NodePath("FallingState")
 metadata/_custom_type_script = "uid://dkyhwdj2bikpr"
 
-[node name="RunningState" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+[node name="RunningState" type="Node" parent="StateMachine" node_paths=PackedStringArray("foot", "player")]
 unique_name_in_owner = true
 script = ExtResource("4_qjkh3")
+foot = NodePath("../../Foot")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://jq4v0q17k46t"
 
@@ -217,12 +233,14 @@ script = ExtResource("6_g6k8r")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://tnwl4f0v5fm5"
 
-[node name="SlidingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("standing_collision", "sliding_collision", "player")]
+[node name="SlidingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("animated_sprite", "standing_collision", "sliding_collision", "slide", "player")]
 unique_name_in_owner = true
 script = ExtResource("7_boad6")
 slide_duration = 0.5
+animated_sprite = NodePath("../../AnimatedSprite2D")
 standing_collision = NodePath("../../CollisionShapeStanding")
 sliding_collision = NodePath("../../CollisionShapeSliding")
+slide = NodePath("../../Slide")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://bstl75k3o027e"
 
@@ -238,3 +256,19 @@ collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BodySensor"]
 shape = SubResource("RectangleShape2D_hg6s5")
+
+[node name="Foot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_8t03j")
+volume_db = -5.0
+
+[node name="Hurt" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_2ieo8")
+volume_db = -10.0
+
+[node name="Slide" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_yllr7")
+volume_db = -5.0
+
+[node name="CoyoteTimer" type="Timer" parent="."]
+wait_time = 0.08
+one_shot = true

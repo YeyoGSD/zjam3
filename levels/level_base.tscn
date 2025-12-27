@@ -1,12 +1,22 @@
-[gd_scene load_steps=7 format=3 uid="uid://b6i42i8goc61s"]
+[gd_scene load_steps=17 format=3 uid="uid://b6i42i8goc61s"]
 
 [ext_resource type="PackedScene" uid="uid://dddfvdravsbp7" path="res://UI/radio_ui/radio_ui.tscn" id="1_nmr65"]
 [ext_resource type="Script" uid="uid://crc0lbp7e4x26" path="res://levels/level_base.gd" id="1_vmt1o"]
+[ext_resource type="Texture2D" uid="uid://c3x6u6fmktcnw" path="res://levels/levele_1/background/paralaxFont1.png" id="2_p3adb"]
 [ext_resource type="PackedScene" uid="uid://fkaptauc5mu0" path="res://UI/game_over_screen/game_over_screen.tscn" id="2_vmt1o"]
+[ext_resource type="Texture2D" uid="uid://cpvbw1vsmd4q4" path="res://levels/levele_1/background/paralaxFont2.png" id="3_5f4n4"]
+[ext_resource type="AudioStream" uid="uid://botrmpq7mu36a" path="res://UI/bg.ogg" id="4_da5si"]
+[ext_resource type="Texture2D" uid="uid://ckq8x14qkur6g" path="res://levels/levele_1/background/paralaxFont3.png" id="4_twsyw"]
+[ext_resource type="Texture2D" uid="uid://ttflw8ppeamt" path="res://levels/levele_1/background/paralaxFont4.png" id="5_6hf62"]
+[ext_resource type="Texture2D" uid="uid://ccc4rte0ecrbr" path="res://levels/levele_1/background/paralaxFont5.png" id="6_kuw7y"]
+[ext_resource type="PackedScene" uid="uid://7q7evw6hepo8" path="res://UI/timer/timer.tscn" id="9_twsyw"]
+[ext_resource type="PackedScene" uid="uid://ctta6tiart5g8" path="res://UI/win_screen/win_screen.tscn" id="10_6hf62"]
+[ext_resource type="PackedScene" uid="uid://dq45arihag0is" path="res://UI/pause_screen/pause_screen.tscn" id="11_6hf62"]
+[ext_resource type="PackedScene" uid="uid://qo3c5jurquq0" path="res://UI/lives_ui/lives_ui.tscn" id="12_kuw7y"]
 
 [sub_resource type="Animation" id="Animation_pjrb6"]
 resource_name = "DayCycle"
-length = 180.0
+length = 86.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -14,10 +24,22 @@ tracks/0/path = NodePath("LevelBase/AmbientLight:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 3.0333333, 120.00001, 180),
+"times": PackedFloat32Array(0, 86, 120.00001, 180),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(0.7188297, 0.4641232, 0.3343134, 1), Color(1, 0.27058825, 0.05490196, 1), Color(0, 0.007843138, 0.22352941, 1)]
+"values": [Color(1, 1, 1, 1), Color(0.064422786, 0.16959992, 0.60571355, 1), Color(1, 0.27058825, 0.05490196, 1), Color(0, 0.007843138, 0.22352941, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LevelBase/BG/Sol/Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 86),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 118)]
 }
 
 [sub_resource type="Animation" id="Animation_xwkvk"]
@@ -34,6 +56,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LevelBase/BG/Sol/Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_c651c"]
 _data = {
@@ -44,12 +78,89 @@ _data = {
 [node name="LevelBase" type="Node"]
 script = ExtResource("1_vmt1o")
 
+[node name="BG" type="Node2D" parent="."]
+position = Vector2(320, -175)
+
+[node name="Fondo" type="Parallax2D" parent="BG"]
+scroll_scale = Vector2(0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="BG/Fondo"]
+texture = ExtResource("2_p3adb")
+
+[node name="Sol" type="Parallax2D" parent="BG"]
+scroll_scale = Vector2(0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="BG/Sol"]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_5f4n4")
+offset = Vector2(0, 80)
+
+[node name="EdificioTraseros" type="Parallax2D" parent="BG"]
+scroll_scale = Vector2(0.05, 1)
+repeat_size = Vector2(640, 0)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="BG/EdificioTraseros"]
+texture = ExtResource("4_twsyw")
+
+[node name="Nubes" type="Parallax2D" parent="BG"]
+scroll_scale = Vector2(0.03, 1)
+repeat_size = Vector2(640, 0)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="BG/Nubes"]
+texture = ExtResource("5_6hf62")
+
+[node name="Nubes2" type="Parallax2D" parent="BG"]
+scroll_scale = Vector2(0.03, 1)
+scroll_offset = Vector2(-201, -192)
+repeat_size = Vector2(640, 0)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="BG/Nubes2"]
+texture = ExtResource("5_6hf62")
+
+[node name="Nubes3" type="Parallax2D" parent="BG"]
+scroll_scale = Vector2(0.03, 1)
+scroll_offset = Vector2(-38, -439)
+repeat_size = Vector2(640, 0)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="BG/Nubes3"]
+texture = ExtResource("5_6hf62")
+
+[node name="Nubes4" type="Parallax2D" parent="BG"]
+scroll_scale = Vector2(0.03, 1)
+scroll_offset = Vector2(-331, -709)
+repeat_size = Vector2(640, 0)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="BG/Nubes4"]
+texture = ExtResource("5_6hf62")
+
+[node name="Parallax2D5" type="Parallax2D" parent="BG"]
+scroll_scale = Vector2(0.1, 1)
+repeat_size = Vector2(640, 0)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="BG/Parallax2D5"]
+texture = ExtResource("6_kuw7y")
+
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="RadioUI" parent="UI" instance=ExtResource("1_nmr65")]
 
+[node name="Timer" parent="UI" instance=ExtResource("9_twsyw")]
+
+[node name="Lives_ui" parent="UI" instance=ExtResource("12_kuw7y")]
+
 [node name="GameOverScreen" parent="UI" instance=ExtResource("2_vmt1o")]
-process_mode = 2
+visible = false
+
+[node name="WinScreen" parent="UI" instance=ExtResource("10_6hf62")]
+visible = false
+
+[node name="PauseScreen" parent="UI" instance=ExtResource("11_6hf62")]
 visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -60,5 +171,10 @@ libraries = {
 autoplay = "DayCycle"
 
 [node name="AmbientLight" type="CanvasModulate" parent="."]
+
+[node name="Background" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_da5si")
+volume_db = -10.0
+autoplay = true
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

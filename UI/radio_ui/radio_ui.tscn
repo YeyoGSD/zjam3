@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dddfvdravsbp7"]
+[gd_scene load_steps=9 format=3 uid="uid://dddfvdravsbp7"]
 
 [ext_resource type="Script" uid="uid://cf0amckv3cew1" path="res://UI/radio_ui/radio_ui.gd" id="1_p0dv1"]
 [ext_resource type="Theme" uid="uid://d2mhkr85rcqje" path="res://UI/theme.tres" id="1_xxyce"]
 [ext_resource type="Texture2D" uid="uid://bvst6topyc52i" path="res://UI/HUD Text Box.png" id="3_iblk3"]
+[ext_resource type="AudioStream" uid="uid://gftb7unnspnm" path="res://UI/radio.ogg" id="4_iblk3"]
 
 [sub_resource type="Animation" id="Animation_mkj00"]
 length = 0.001
@@ -110,3 +111,7 @@ autowrap_mode = 2
 libraries = {
 &"": SubResource("AnimationLibrary_iblk3")
 }
+
+[node name="WalkieSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_iblk3")
+volume_db = -10.0

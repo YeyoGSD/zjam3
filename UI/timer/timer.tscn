@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://7q7evw6hepo8"]
+
+[ext_resource type="Theme" uid="uid://d2mhkr85rcqje" path="res://UI/theme.tres" id="1_a37jd"]
+[ext_resource type="Script" uid="uid://dvgvlgchx8wi8" path="res://UI/timer/timer.gd" id="1_jhwjq"]
+
+[node name="Timer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_a37jd")
+script = ExtResource("1_jhwjq")
+
+[node name="Contador" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 25.0
+grow_horizontal = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Timeout" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -83.5
+offset_right = 83.5
+offset_bottom = 25.0
+grow_horizontal = 2
+text = "Se acabó el tiempo"
+horizontal_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

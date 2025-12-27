@@ -11,6 +11,8 @@ extends CharacterBody2D
 @onready var ray_cast_top_left := $RayCastTopLeft as RayCast2D
 @onready var animated_sprite_2d := $AnimatedSprite2D as AnimatedSprite2D
 @onready var health_cmp := $HealthCMP as HealthCMP
+@onready var hurt: AudioStreamPlayer = $Hurt
+@onready var coyote_timer: Timer = $CoyoteTimer
 
 var running_speed: float
 var sliding_speed: float
@@ -18,13 +20,19 @@ var sliding_speed: float
 enum State { RUNNING, FALLING ,JUMPING, SLIDING, CLIMBING }
 
 func recieve_damage(damage: int):
-		health_cmp.decrease_health(damage)
-		match health_cmp.lives:
-			2:
-				_set_speeds(default_speed - 50)
-				EventBus.player_first_hit.emit()
-			1: _set_speeds(default_speed - 100)
-			0: EventBus.player_died.emit()
+	var tween := create_tween()
+	tween.tween_property(animated_sprite_2d, "modulate", Color.RED, 0.1)
+	tween.tween_property(animated_sprite_2d, "modulate", Color.WHITE, 0.1)
+	hurt.pitch_scale = randf_range(0.9, 1.2 )
+	hurt.play()
+	health_cmp.decrease_health(damage)
+	EventBus.player_lives_changed.emit(health_cmp.lives)
+	match health_cmp.lives:
+		2:
+			_set_speeds(default_speed - 25)
+			EventBus.player_first_hit.emit()
+		1: _set_speeds(default_speed - 50)
+		0: EventBus.player_died.emit()
 
 
 func _connect_signals() -> void:

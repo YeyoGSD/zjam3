@@ -1,8 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://dt5pf8hr7isv5"]
+[gd_scene load_steps=8 format=3 uid="uid://dt5pf8hr7isv5"]
 
 [ext_resource type="Theme" uid="uid://d2mhkr85rcqje" path="res://UI/theme.tres" id="1_0nwov"]
 [ext_resource type="Script" uid="uid://c3y7fgfvstdyj" path="res://UI/menu_screen/menu_screen.gd" id="1_fh4xq"]
 [ext_resource type="Texture2D" uid="uid://1my8ftjqvjcw" path="res://UI/paralaxFont.png" id="3_we741"]
+[ext_resource type="AudioStream" uid="uid://di43stqwmg02s" path="res://UI/menu_screen/Menu OST.ogg" id="4_o86h5"]
+[ext_resource type="FontFile" uid="uid://ckyhd00btaidy" path="res://UI/ChipMug.ttf" id="4_qplg7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o86h5"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+
+[sub_resource type="Theme" id="Theme_qplg7"]
+default_font = ExtResource("4_qplg7")
+default_font_size = 24
+Button/styles/normal = SubResource("StyleBoxEmpty_o86h5")
 
 [node name="MenuScreen" type="Control"]
 layout_mode = 3
@@ -57,17 +70,24 @@ layout_mode = 2
 
 [node name="Tutorial" type="Button" parent="Panel/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme = SubResource("Theme_qplg7")
 text = "Tutorial
 "
 
 [node name="Jugar" type="Button" parent="Panel/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme = SubResource("Theme_qplg7")
 text = "Jugar
 "
 
 [node name="Salir" type="Button" parent="Panel/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme = SubResource("Theme_qplg7")
 text = "Salir"
+
+[node name="BG" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_o86h5")
+autoplay = true
 
 [connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer/Tutorial" to="." method="_on_tutorial_pressed"]
 [connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer/Jugar" to="." method="_on_jugar_pressed"]

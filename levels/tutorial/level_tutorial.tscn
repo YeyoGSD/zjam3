@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dvus5tlw3ks1q" path="res://levels/tutorial/TiledSUeloPasto.png" id="3_cxh4l"]
 [ext_resource type="Texture2D" uid="uid://baehgce5k47sq" path="res://icon.svg" id="3_gfmcj"]
 [ext_resource type="PackedScene" uid="uid://d0owg7aispb6k" path="res://player/player.tscn" id="4_2xdu1"]
+[ext_resource type="AudioStream" uid="uid://bmn4o5tijr0jb" path="res://levels/tutorial/Tutorial OST.ogg" id="6_gfmcj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uwjfh"]
 size = Vector2(414, 66)
@@ -24,14 +25,11 @@ size = Vector2(509, 508)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d3dk7"]
 size = Vector2(626, 96)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rxahp"]
-size = Vector2(248, 92)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t8wr8"]
-size = Vector2(104, 114)
+size = Vector2(146, 114)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fu1g8"]
-size = Vector2(156, 462)
+size = Vector2(198, 462)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1qisd"]
 size = Vector2(234, 274)
@@ -236,14 +234,11 @@ sources/0 = SubResource("TileSetAtlasSource_gfmcj")
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_e7uxu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ntssg"]
-radius = 64.00781
+radius = 51.088158
 
 [node name="LevelBase" node_paths=PackedStringArray("world_limit", "win_area") instance=ExtResource("1_3jbpy")]
 world_limit = NodePath("WorldLimits")
 win_area = NodePath("WinArea")
-
-[node name="AmbientLight" parent="." index="2"]
-position = Vector2(0, -342)
 
 [node name="RadioZones" type="Node" parent="." index="3"]
 
@@ -290,28 +285,21 @@ dialogue_text = "Acercate corriendo a la pared para escalarla"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RadioZones/Climb" index="0"]
 shape = SubResource("RectangleShape2D_d3dk7")
 
-[node name="Confia" parent="RadioZones" index="6" instance=ExtResource("2_cxh4l")]
-position = Vector2(2847, -197)
-dialogue_text = "Sobrevivirás si haces lo que te diga... tal vez"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RadioZones/Confia" index="0"]
-shape = SubResource("RectangleShape2D_rxahp")
-
-[node name="Arriba" parent="RadioZones" index="7" instance=ExtResource("2_cxh4l")]
+[node name="Arriba" parent="RadioZones" index="6" instance=ExtResource("2_cxh4l")]
 position = Vector2(3102, -143)
 dialogue_text = "¡POR ARRIBA!"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RadioZones/Arriba" index="0"]
 shape = SubResource("RectangleShape2D_t8wr8")
 
-[node name="MasRapido" parent="RadioZones" index="8" instance=ExtResource("2_cxh4l")]
+[node name="MasRapido" parent="RadioZones" index="7" instance=ExtResource("2_cxh4l")]
 position = Vector2(3473, 188)
 dialogue_text = "El otro arriba"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RadioZones/MasRapido" index="0"]
 shape = SubResource("RectangleShape2D_fu1g8")
 
-[node name="LoQueVes" parent="RadioZones" index="9" instance=ExtResource("2_cxh4l")]
+[node name="LoQueVes" parent="RadioZones" index="8" instance=ExtResource("2_cxh4l")]
 position = Vector2(3420, -253)
 dialogue_text = "Si no recibes instrucciones, confía en lo que ves"
 
@@ -324,7 +312,7 @@ tile_map_data = PackedByteArray("AAAAAAUAAAABAAAAAAAAAAYAAAAEAAMAAAABAAUAAAACAAA
 tile_set = SubResource("TileSet_a875s")
 
 [node name="Player" parent="." index="5" instance=ExtResource("4_2xdu1")]
-position = Vector2(576, -363)
+position = Vector2(473, -56)
 
 [node name="WorldLimits" type="Area2D" parent="." index="6"]
 position = Vector2(0, 725)
@@ -334,17 +322,21 @@ collision_mask = 2
 shape = SubResource("WorldBoundaryShape2D_e7uxu")
 
 [node name="WinArea" type="Area2D" parent="." index="7"]
-position = Vector2(1923, -194)
+position = Vector2(3737, -199)
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WinArea" index="0"]
-position = Vector2(7735, -725)
 shape = SubResource("CircleShape2D_ntssg")
+
+[node name="AmbientLight" parent="." index="8"]
+position = Vector2(0, -342)
+
+[node name="Background" parent="." index="9"]
+stream = ExtResource("6_gfmcj")
 
 [editable path="RadioZones/Slide"]
 [editable path="RadioZones/HazCaso"]
 [editable path="RadioZones/Jump"]
 [editable path="RadioZones/NotJump"]
 [editable path="RadioZones/Climb"]
-[editable path="RadioZones/Confia"]
 [editable path="RadioZones/Arriba"]

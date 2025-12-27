@@ -1,41 +1,40 @@
-[gd_scene load_steps=4 format=3 uid="uid://5e4g1m5pdk26"]
+[gd_scene load_steps=6 format=3 uid="uid://5e4g1m5pdk26"]
 
+[ext_resource type="Texture2D" uid="uid://bicjfv52mqf2q" path="res://zombie/espina_final.png" id="1_fsm1j"]
 [ext_resource type="Script" uid="uid://cxek38poruo18" path="res://components/hurt_player/hurt_player_cmp.gd" id="1_q7r7n"]
+[ext_resource type="AudioStream" uid="uid://vs1dqoekarpf" path="res://zombie/Thick_dry_thorny_vin.ogg" id="2_ixsl6"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ojvjc"]
-size = Vector2(40, 40)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fsm1j"]
+size = Vector2(14, 10)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ojvjc"]
-radius = 15.0
+radius = 5.0990195
 
 [node name="Zombie" type="CharacterBody2D"]
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_ojvjc")
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_fsm1j")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0.3867997, 2.8878452e-07, 1)
+[node name="Sprite2d" type="Sprite2D" parent="."]
+position = Vector2(0, -5.9999995)
+scale = Vector2(0.023333332, 0.03)
+texture = ExtResource("1_fsm1j")
 
 [node name="Hitbox" type="Area2D" parent="."]
+position = Vector2(0, -5)
 collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_ojvjc")
 
-[node name="HurtPlayerCMP" type="Node" parent="." node_paths=PackedStringArray("hitbox")]
+[node name="HurtPlayerCMP" type="Node" parent="." node_paths=PackedStringArray("hurt", "hitbox")]
 script = ExtResource("1_q7r7n")
+hurt = NodePath("../Hit")
 hitbox = NodePath("../Hitbox")
 metadata/_custom_type_script = "uid://cxek38poruo18"
+
+[node name="Hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ixsl6")
